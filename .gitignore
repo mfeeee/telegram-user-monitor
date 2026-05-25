@@ -1,0 +1,16 @@
+# Dependências
+node_modules/
+
+# Credenciais e configuração sensível
+.env
+
+# Sessão do TDLib (dados de autenticação da conta Telegram)
+_td_database/
+_td_files/
+
+# Estado em tempo de execução (gerado automaticamente)
+data.json
+
+# Logs
+*.log
+npm-debug.log*
