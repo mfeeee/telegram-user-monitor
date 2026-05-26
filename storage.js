@@ -1,9 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, 'data.json');
+const filePath = path.join(__dirname, 'persistente', 'data.json');
 
 function loadData() {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
   if (!fs.existsSync(filePath)) {
     return { keywords: [], monitoredChats: [], adminChatId: null };
   }
@@ -11,6 +16,10 @@ function loadData() {
 }
 
 function saveData(data) {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+  }
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
